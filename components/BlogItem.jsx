@@ -12,7 +12,7 @@ export default function BlogItem({ blogId, image, category, title, description }
         <p className="ml-5 mt-5 inline-block bg-white text-black text-sm p-1">{category}</p>
         <div className="p-5">
           <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-100">{title}</h5>
-          <p className="mb-3 text-sm tracking-tight text-gray-300">{description}</p>
+          <p className="mb-3 text-sm tracking-tight text-gray-300 line-clamp-2">{description}</p>
           <div className="inline-flex items-center gap-1 py-2 font-semibold hover:underline hover:cursor-pointer">
             Read more <CircleArrowRight size="20px"/>
           </div>

@@ -3,19 +3,24 @@
 import axios from "axios";
 import BlogItem from "./BlogItem";
 import { useEffect, useState } from "react";
+import Loader from "./customLoader/Loader";
 
 export default function BlogList() {
+  const [loading, setLoading] = useState(false);
   const [blog_items, setBlogItems] = useState([]);
   const [category, setCategory] = useState("All");
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get("/api/blog");
-        setBlogItems(response.data.blogs)
+        setBlogItems(response.data.blogs);
         console.log(response.data.blogs);
       } catch (error) {
         console.error("Error fetching blog data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -54,20 +59,24 @@ export default function BlogList() {
           );
         })}
       </div>
-      <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24">
-        {filteredItems.map((item, index) => {
-          return (
-            <BlogItem
-              key={index}
-              blogId={item._id}
-              image={item.image}
-              category={item.category}
-              title={item.title}
-              description={item.description}
-            />
-          );
-        })}
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24">
+          {filteredItems.map((item, index) => {
+            return (
+              <BlogItem
+                key={index}
+                blogId={item._id}
+                image={item.image}
+                category={item.category}
+                title={item.title}
+                description={item.description}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
