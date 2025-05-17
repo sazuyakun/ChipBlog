@@ -12,7 +12,7 @@ export default function Header() {
         <button onClick={() => router.push("/")} className=" cursor-pointer">
           <MainLogo />
         </button>
-        <button onClick={() => router.push("/admin/addProduct")} className="flex cursor-pointer items-center gap-2 font-medium py-1 px-3 sm:py-3 sm:px-6 border border-solid shadow-white shadow-[-7px_7px_0px] transform transition-transform hover:scale-105">
+        <button onClick={() => router.push("/admin")} className="flex cursor-pointer items-center gap-2 font-medium py-1 px-3 sm:py-3 sm:px-6 border border-solid shadow-white shadow-[-7px_7px_0px] transform transition-transform hover:scale-105">
           Get Started
           <ArrowRight size={20}/>
         </button>
