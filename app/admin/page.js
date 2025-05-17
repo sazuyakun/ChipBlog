@@ -12,14 +12,20 @@ async function getUser() {
 
   await connectDB();
 
-  const user = await UserModel.findById(session.user.id)
-  console.log(session.user.id)
+  const user = await UserModel.findOne({_id: session.user.id})
+
+  if (!user) {
+    redirect("/signin");
+  }
+
+  return user;
 }
 
 export default async function Admin(){
-  const user = await getUser();
-
+  const user = await getUser()
   return (
-    <>Admin</>
+    <div>
+      {user.name}
+    </div>
   )
 }
