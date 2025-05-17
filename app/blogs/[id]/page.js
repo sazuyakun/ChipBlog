@@ -65,7 +65,7 @@ export default function BlogPage({ params }){
         alt=''
         className="border-4 border-black"
       />
-      <h1 className="my-8 text-[26px] font-semibold">Introduction:</h1>
+      <h1 className="my-8 text-[26px] font-semibold">Introduction: </h1>
       <div dangerouslySetInnerHTML={{ __html: blog.description }} />
       <h3 className="my-5 text-[18px] font-semibold">Dummy Blog: Lorem ipsum dolor.</h3>
       <p>Some secondary stuff: Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
